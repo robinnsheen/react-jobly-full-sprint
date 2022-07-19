@@ -1,5 +1,5 @@
 function CompanyList() {
-  return;
+  return <p>CompanyList</p>;
 }
 
 export default CompanyList;
