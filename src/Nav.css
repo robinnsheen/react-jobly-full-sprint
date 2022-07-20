@@ -1,9 +1,7 @@
 .Nav {
-
     top: 0;
     width: 100%;
     font-weight: bold;
-
 }
 
 
@@ -15,19 +13,17 @@ nav {
 }
 
 nav a {
-    padding: 0.5em 0;
-    width: 12em;
+    width: 8em;
     display: inline-block;
     color: white;
     text-decoration: none;
 }
 
-nav a.active {
+a.active {
     color: rgb(53, 53, 53);
     text-decoration: none;
 }
 
-nav a:hover {
-    color: black;
+nav a.hover {
     text-decoration: none;
 }

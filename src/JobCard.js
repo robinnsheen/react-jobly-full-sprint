@@ -1,4 +1,4 @@
-import "./JobCard.css"
+import "./JobCard.css";
 
 /**
  *  JobCard
@@ -15,11 +15,13 @@ function JobCard({ job, company }) {
   // console.log("Job",job)
 
   return (
-    <div className="JobCard">
-      <h3>{job.title}</h3>
-      <p>{!company ? job.companyName : null}</p>
-      <p>salary: {job.salary}</p>
-      <p>equity: {job.equity}</p>
+    <div className="JobCard card">
+      <div className="CardBody">
+        <h3 className="Card-title">{job.title}</h3>
+        <p>{!company ? job.companyName : null}</p>
+        <p>salary: {job.salary}</p>
+        <p>equity: {job.equity}</p>
+      </div>
     </div>
   );
 }
