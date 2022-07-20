@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Navigate } from "react-router-dom";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
@@ -44,17 +45,17 @@ class JoblyApi {
     let res = await this.request(`companies/${handle}`);
     return res.company;
   }
-// gets companies by search term
+  // gets companies by search term
   static async getCompanies(searchTerm) {
     let res = await this.request(`companies/`, { name: searchTerm });
     return res.companies;
   }
-// gets jobs by searchterm
+  // gets jobs by searchterm
   static async getJobs(searchTerm) {
     let res = await this.request(`jobs/`, { title: searchTerm });
     return res.jobs;
   }
-// gets jobs for company
+  // gets jobs for company
   static async getJobsForCompany(handle) {
     let res = await this.request(`companies/${handle}`);
     console.log("in getjobsforcompany", res.company.jobs);
@@ -64,4 +65,4 @@ class JoblyApi {
   // obviously, you'll add a lot here ...
 }
 
-export default JoblyApi
+export default JoblyApi;

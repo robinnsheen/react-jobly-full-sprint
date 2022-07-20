@@ -1,7 +1,18 @@
 import React, { useState } from "react";
 
-function SearchForm({search}){
-  const[term,setTerm]= useState("");
+/**
+ * SearchForm component
+ * Props:
+ *  - search: function for handleSubmit
+ *
+ * States:
+ *  - term: string showing value of input field
+ *
+ * JobList => SearchForm
+ * CompanyList => SearchForm
+ */
+function SearchForm({ search }) {
+  const [term, setTerm] = useState("");
 
   function handleChange(evt) {
     setTerm(evt.target.value);

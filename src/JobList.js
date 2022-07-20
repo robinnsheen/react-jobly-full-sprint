@@ -5,7 +5,6 @@ import SearchForm from "./SearchForm";
 import { useParams } from 'react-router-dom';
 import "./JobList.css";
 
-
 /**
  * JobList
  * Renders a list of JobCards for all jobs or filtered by title from

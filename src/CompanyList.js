@@ -18,7 +18,7 @@ import { Link } from "react-router-dom";
  *
  */
 function CompanyList() {
-  const [companies, setCompanies] = useState("");
+  const [companies, setCompanies] = useState(null);
   const [nameFilter, setNameFilter] = useState(null);
 
 
@@ -39,7 +39,7 @@ function CompanyList() {
     setNameFilter(filter);
   }
 
-  if (companies === "") return <i>Loading...</i>;
+  if (companies === null) return <i>Loading...</i>;
 
   return (
     <div className="CompanyList">

@@ -11,32 +11,36 @@ import JobCard from "./JobCard";
  * Jobly API
  *
  * state:
- *  - company: {company}
+ *  - company: {data, errors}
  *
  *
  * Rendered at /companies/:company
  *
  */
 function CompanyDetail() {
-  const [company, setCompany] = useState(null);
+  const [company, setCompany] = useState({ data: null, errors: null });
   const params = useParams();
 
   useEffect(function fetchCompanyOnRender() {
     async function fetchCompany() {
-
+      try {
         const result = await JoblyApi.getCompany(params.company);
-        console.log("GETCOMPANYRESULTS", result);
-        if(result.status===404){
-          return(<Navigate to="/"></Navigate>)
-        }
-        setCompany(result);
-
-
+        // console.log("GETCOMPANYRESULTS", result);
+        setCompany({ data: result, errors: null });
+      } catch (err) {
+        setCompany({
+          data: null,
+          errors: err
+        });
+      }
     }
     fetchCompany();
   }, []);
+
   console.log(company);
-  if (company === null) return <i>Loading...</i>;
+
+  if (company.errors) return <Navigate to="/" />;
+  else if (company.data === null) return <i>Loading...</i>;
 
   return (
     <div className="CompanyDetail">
@@ -48,7 +52,6 @@ function CompanyDetail() {
       {company.jobs.map(job => (
         <JobCard key={job.id} job={job} company={company.name} />
       ))}
-
     </div>
   );
 

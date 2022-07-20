@@ -2,8 +2,8 @@
  * CompanyCard
  * renders individual company Card
  *
- *
  * props: company = {company}
+ *
  * CompanyList--> CompanyCard
  */
 

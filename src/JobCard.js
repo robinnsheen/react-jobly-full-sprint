@@ -1,24 +1,20 @@
 /**
- * JobCard
- * Renders a indivdual JobCard
- * Jobly API
- *
+ *  JobCard
+ *  Renders a indivdual JobCard from Jobly API
  *
  *  jobList/CardDetails---> JobCard
- *
  */
 
-function JobCard({job, company}) {
-  //console.log("Job",job)
+function JobCard({ job, company }) {
+  // console.log("Job",job)
 
-  return(
+  return (
     <div>
-
       <p>{job.title}</p>
       <p>{!company ? job.companyName : null}</p>
       <p>salary: {job.salary}</p>
       <p>equity: {job.equity}</p>
     </div>
-  )
+  );
 }
-export default JobCard
+export default JobCard;
