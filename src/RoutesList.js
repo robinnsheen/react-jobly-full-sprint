@@ -4,7 +4,7 @@ import CompanyList from './CompanyList';
 import CompanyDetail from './CompanyDetail';
 import JobList from './JobList';
 
-
+/** List of routes and the components they render */
 function RoutesList(){
   return(
     <Routes>

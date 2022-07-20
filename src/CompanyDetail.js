@@ -11,12 +11,14 @@ import JobCard from "./JobCard";
  * Jobly API
  *
  * state:
- *  - company: {data, errors}
+ *  - company: {data: null or {company}, errors: null or [errors]}
  *
+ * props: none
  *
  * Rendered at /companies/:company
  *
  */
+//TODO: ADD COMPANY LOGO IF PRESENT
 function CompanyDetail() {
   const [company, setCompany] = useState({ data: null, errors: null });
   const params = useParams();

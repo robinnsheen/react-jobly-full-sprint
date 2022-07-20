@@ -4,7 +4,6 @@ import CompanyCard from "./CompanyCard";
 import SearchForm from "./SearchForm";
 import "./CompanyList.css";
 import { Link } from "react-router-dom";
-
 /**
  * CompanyList
  * Renders a list of CompanyCards for all companies or filtered by name from
@@ -13,6 +12,8 @@ import { Link } from "react-router-dom";
  * state:
  *  - companies: [{handle, description, name, logoUrl, numEmployees}, ...]
  *  - nameFilter: null or "search term"
+ *
+ * props: none
  *
  * Rendered at /companies
  *
@@ -35,6 +36,7 @@ function CompanyList() {
     fetchCompanies();
   }, [nameFilter]);
 
+  //updates NameFilter with "filter"
   function search(filter) {
     setNameFilter(filter);
   }

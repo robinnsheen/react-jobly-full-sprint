@@ -14,6 +14,8 @@ import "./JobList.css";
  *  - jobs: [{companyHandle, companyName, equity, id, salary, title}, ...]
  *  - titleFilter: null or "search term"
  *
+ * props: none
+ *
  * Rendered at /jobs
  *
  */
@@ -37,6 +39,7 @@ function JobList() {
     fetchJobs();
   }, [titleFilter]);
 
+  //set TitleFilter to "filter"
   function search(filter) {
     setTitleFilter(filter);
   }
@@ -44,7 +47,7 @@ function JobList() {
   if (jobs === null) return <i>Loading...</i>;
 
   return (
-    <div className="CompanyList">
+    <div className="JobList">
       <SearchForm search={search} />
       {jobs.map(job => (
         <JobCard key={job.id} job={job} />

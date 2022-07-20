@@ -1,6 +1,12 @@
+import "./JobCard.css"
+
 /**
  *  JobCard
- *  Renders a indivdual JobCard from Jobly API
+ *  Renders a individual JobCard from Jobly API
+ *
+ *  states: none
+ *
+ *  props: none
  *
  *  jobList/CardDetails---> JobCard
  */
@@ -9,8 +15,8 @@ function JobCard({ job, company }) {
   // console.log("Job",job)
 
   return (
-    <div>
-      <p>{job.title}</p>
+    <div className="JobCard">
+      <h3>{job.title}</h3>
       <p>{!company ? job.companyName : null}</p>
       <p>salary: {job.salary}</p>
       <p>equity: {job.equity}</p>
