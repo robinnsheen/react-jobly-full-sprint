@@ -7,10 +7,12 @@ import './Nav.css';
 
 function Nav() {
   return (
-    <nav className="Nav">
+    <nav className="Nav navbar navbar-expand-md">
       <NavLink to="/">Jobly</NavLink>
-      <NavLink to="/companies">Companies</NavLink>
-      <NavLink to="/jobs">Jobs</NavLink>
+      <ul className="navbar-nav ms-auto" >
+      <NavLink className="nav-item me-4" to="/companies">Companies</NavLink>
+      <NavLink className="nav-item me-4"  to="/jobs">Jobs</NavLink>
+      </ul>
     </nav>
   );
 }

@@ -14,11 +14,16 @@ import "./CompanyCard.css";
 function CompanyCard({ company }) {
 
   return (
-    <div className="CompanyCard">
-      <h3>{company.name}</h3>
+    <div className="CompanyCard card">
+      <div className="CardBody">
+      <h3 className="Card-title">{company.name}</h3>
+      {company.logoUrl
+      ? <img className="float-end ms-5" src={`${company.logoUrl}`} alt={company.name} />
+      : null}
       <p>{company.description}</p>
-      <img src={`${company.logoUrl}`} alt={company.name} />
 
+
+    </div>
     </div>
   );
 

@@ -44,16 +44,23 @@ function CompanyList() {
   if (companies === null) return <i>Loading...</i>;
 
   return (
-    <div className="CompanyList">
+    <div className="container-fluid">
+    <div className="CompanyList col-md-8 offset-md-2">
       <SearchForm search={search} />
+      <div className="Companies-list ">
       {companies.map(company => (
+
 
         <Link to={`/companies/${company.handle}`}>
           <CompanyCard key={company.handle} company={company} />
         </Link>
 
+
       ))}
+       </div>
     </div>
+    </div>
+
   );
 
 }
