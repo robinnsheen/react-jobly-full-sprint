@@ -1,7 +1,7 @@
 import './App.css';
 import Nav from './Nav.js';
 import RoutesList from './RoutesList';
-import {  BrowserRouter  } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 
 function App() {
