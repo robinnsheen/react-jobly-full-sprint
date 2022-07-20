@@ -49,7 +49,7 @@ function CompanyDetail() {
         <p>{company.description}</p>
       </div>
 
-      {company.jobs.map(job => (
+      {company.data.jobs.map(job => (
         <JobCard key={job.id} job={job} company={company.name} />
       ))}
     </div>
