@@ -1,5 +1,15 @@
+/**
+ * JobCard
+ * Renders a indivdual JobCard
+ * Jobly API
+ *
+ *
+ *  jobList/CardDetails---> JobCard
+ *
+ */
+
 function JobCard({job, company}) {
-  console.log("Job",job)
+  //console.log("Job",job)
 
   return(
     <div>

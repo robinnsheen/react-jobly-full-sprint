@@ -3,6 +3,7 @@ import JoblyApi from "./api";
 import CompanyCard from "./CompanyCard";
 import SearchForm from "./SearchForm";
 import "./CompanyList.css";
+import { Link } from "react-router-dom";
 
 /**
  * CompanyList
@@ -22,7 +23,7 @@ function CompanyList() {
 
 
   console.log("companies", companies);
-  console.log("nameFilter", nameFilter);
+  // console.log("nameFilter", nameFilter);
 
   useEffect(function fetchCompaniesOnRender() {
     async function fetchCompanies() {
@@ -44,7 +45,11 @@ function CompanyList() {
     <div className="CompanyList">
       <SearchForm search={search} />
       {companies.map(company => (
-        <CompanyCard key={company.handle} company={company} />
+
+        <Link to={`/companies/${company.handle}`}>
+          <CompanyCard key={company.handle} company={company} />
+        </Link>
+
       ))}
     </div>
   );

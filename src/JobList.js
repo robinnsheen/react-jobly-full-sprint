@@ -19,13 +19,13 @@ import "./JobList.css";
  *
  */
 
- function JobList({company = {jobs: []}}) {
-  const [jobs, setJobs] = useState(company.jobs);
+function JobList() {
+  const [jobs, setJobs] = useState(null);
   const [titleFilter, setTitleFilter] = useState(null);
-  const params = useParams();
-  console.log("handle", params.company)
-  console.log("jobs", jobs);
-  console.log("titleFilter", titleFilter);
+  // console.log("handle", params.company)
+  // console.log("jobs", jobs);
+  // console.log("titleFilter", titleFilter);
+
 
   useEffect(function fetchJobsOnRender() {
     async function fetchJobs() {
@@ -33,6 +33,7 @@ import "./JobList.css";
       const result = await JoblyApi.getJobs(titleFilter);
       console.log("result", result);
       setJobs(result);
+
     }
     fetchJobs();
   }, [titleFilter]);
@@ -41,11 +42,11 @@ import "./JobList.css";
     setTitleFilter(filter);
   }
 
-  if (jobs === "") return <i>Loading...</i>;
+  if (jobs === null) return <i>Loading...</i>;
 
   return (
     <div className="CompanyList">
-      {params.company ? null : <SearchForm search={search} />}
+      <SearchForm search={search} />
       {jobs.map(job => (
         <JobCard key={job.id} job={job} />
       ))}
