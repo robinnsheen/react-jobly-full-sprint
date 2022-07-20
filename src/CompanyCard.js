@@ -1,4 +1,5 @@
 function CompanyCard({company}) {
+  console.log("company",company)
 
   return(
     <div>
