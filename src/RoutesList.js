@@ -1,8 +1,9 @@
-import {  Route, Routes } from 'react-router-dom';
+import {  Navigate, Route, Routes } from 'react-router-dom';
 import HomePage from './HomePage';
 import CompanyList from './CompanyList';
 import CompanyDetail from './CompanyDetail';
 import JobList from './JobList';
+
 
 function RoutesList(){
   return(
