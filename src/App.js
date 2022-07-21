@@ -4,32 +4,41 @@ import RoutesList from './RoutesList';
 import { BrowserRouter } from 'react-router-dom';
 import userContext from "./userContext";
 import {  useState } from "react";
+import JoblyApi from './api';
 
 const DEFAULT_USER_DETAILS = {
-  fName: "",
-  lName: "",
+  firstName: "",
+  lastName: "",
   username: "",
-  email: ""
+  email: "",
 };
 
 /** Renders App with Nav and Routes for Jobly */
 
 function App() {
   const [userDetails, setUserDetails] = useState(DEFAULT_USER_DETAILS);
+  const [token, setToken] = useState(null);
+
   console.log("app.js userdetails = ", userDetails)
 
-  function updateUserDetails(newUserDetails) {
-    setUserDetails(newUserDetails);
-    localStorage.setItem("token", newUserDetails.token);
+  async function createUserSetToken(formData) {
+    try {
+      const result = await JoblyApi.createNewUser(formData);
+      console.log("AJAX TOKEN", result);
+      setToken(result);
+      setUserDetails(formData);
 
+    } catch (err) {
+      console.log(err[0]);
+    }
   }
 
   return (
     <div className="App">
-      <userContext.Provider value={{ user: null, userDetails }}>
+      <userContext.Provider value={{ userDetails }}>
         <BrowserRouter>
           <Nav />
-          <RoutesList fxn={updateUserDetails} />
+          <RoutesList fxn={createUserSetToken}  />
         </BrowserRouter>
       </userContext.Provider>
 

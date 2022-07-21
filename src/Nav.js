@@ -9,7 +9,7 @@ import './Nav.css';
 
 function Nav() {
   const { userDetails } = useContext(userContext);
-  const loggedIn = userDetails.username != null ? true : false;
+  const loggedIn = userDetails.username != "" ? true : false;
   if(loggedIn){
     return (
       <nav className="Nav navbar navbar-expand-md mb-4">
