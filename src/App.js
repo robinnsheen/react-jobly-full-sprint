@@ -29,7 +29,7 @@ function App() {
       setUserDetails(formData);
 
     } catch (err) {
-      console.log(err[0]);
+      err.map(e => console.log(e));
     }
   }
 
