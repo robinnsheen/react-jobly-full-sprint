@@ -62,6 +62,13 @@ class JoblyApi {
     return res.company.jobs;
   }
 
+  //post new user
+  static async createNewUser(user){
+    let res = await this.request("auth/register",user,"post" );
+    console.log("createnewuser = ", res)
+    return res.token
+  }
+
   // obviously, you'll add a lot here ...
 }
 

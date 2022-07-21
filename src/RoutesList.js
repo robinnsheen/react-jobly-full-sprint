@@ -14,12 +14,12 @@ import { useContext } from "react";
 function RoutesList({ fxn }) {
   const { userDetails } = useContext(userContext);
 
-  const loggedIn = userDetails.username != null ? true : false;
+  const loggedIn = userDetails.username !== "" ? true : false;
 
   if (loggedIn) {
     return (
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<HomePage  />} />
         <Route path="/companies" element={<CompanyList />} />
         <Route path="companies/:company" element={<CompanyDetail />} />
         <Route path="/jobs" element={<JobList />} />
@@ -29,9 +29,9 @@ function RoutesList({ fxn }) {
   } else {
     return (
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<HomePage  />} />
         <Route path="/login" element={LoginForm} />
-        <Route path="/signup" element={SignupForm} />
+        <Route path="/signup" element={<SignupForm submit={fxn}   />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     );
