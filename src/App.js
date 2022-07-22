@@ -38,6 +38,7 @@ function App() {
 /**updates userDetails when token changes with axios call from JoblyApi: if this
 fails sets token to null and userdetails to default value, sets token in JoblyApi
  class */
+ //TODO: destructure username out of token
   useEffect(function fetchUserOnSignupLogin() {
     async function fetchUser() {
       try {
@@ -70,15 +71,15 @@ fails sets token to null and userdetails to default value, sets token in JoblyAp
     const result = await JoblyApi.loginUser(formData);
     setToken(result);
   }
-
+//TODO: dont need a second getUser call and therefore dont need to decode token!
   // Auth and update user info (firstName, lastName, email) in JoblyApi
   async function profileUpdate(formData) {
     const { firstName, lastName, email } = formData;
     const updateData = { firstName, lastName, email};
     const result = await JoblyApi.updateUser(userDetails.username, updateData);
-    const decodedToken = jwt_decode(token);
-    const newResult = await JoblyApi.getUser(decodedToken.username);
-    setUserDetails(newResult);
+    // const decodedToken = jwt_decode(token);
+    // const newResult = await JoblyApi.getUser(decodedToken.username);
+    setUserDetails(result);
   }
 
   // Log out user from site

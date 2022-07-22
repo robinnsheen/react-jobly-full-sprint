@@ -1,6 +1,7 @@
 import { useState } from "react";
 import userContext from "./userContext";
 import { useContext } from "react";
+//TODO: change auth prop to update
 
 /**
  * ProfileForm component
@@ -28,6 +29,7 @@ function ProfileForm({ auth }) {
   async function handleSubmit(evt) {
     evt.preventDefault();
 
+    //TODO: clear error messages on second submit (same for all forms)
     try {
       await auth(formData);
     } catch (err) {
@@ -35,6 +37,8 @@ function ProfileForm({ auth }) {
     }
 
   }
+
+  //TODO: Fix class names, line lengths
 
   return (
     <div className="SignUpForm">

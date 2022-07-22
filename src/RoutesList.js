@@ -23,6 +23,7 @@ import ProfileForm from './ProfileForm';
 */
 function RoutesList({ register,login,update}) {
 
+  //TODO: check for if we have a user logged in
   const istoken = window.localStorage.getItem("token") !== null ? true : false;
   console.log("istoken",istoken)
 
