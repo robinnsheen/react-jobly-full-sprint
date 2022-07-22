@@ -32,7 +32,7 @@ const DEFAULT_USER_DETAILS = {
 
 function App() {
   const [userDetails, setUserDetails] = useState(DEFAULT_USER_DETAILS);
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState(window.localStorage.getItem("token"));
 
   useEffect(function fetchUserOnSignupLogin() {
     async function fetchUser() {
@@ -42,15 +42,13 @@ function App() {
         console.log("decodedtoken", decodedToken);
         const result = await JoblyApi.getUser(decodedToken.username);
         setUserDetails(result);
+        window.localStorage.setItem("token", token);
       } catch (err) {
         setUserDetails(DEFAULT_USER_DETAILS);
         setToken(null);
-        return;
       }
-
     }
     fetchUser();
-    // console.log("after use effect details:", userDetails);
   }, [token]);
 
 
@@ -65,7 +63,6 @@ function App() {
     } catch (err) {
       setUserDetails(DEFAULT_USER_DETAILS);
       setToken(null);
-      return;
     }
   }
   // Auth and login user to JoblyApi
@@ -78,13 +75,13 @@ function App() {
     } catch (err) {
       setUserDetails(DEFAULT_USER_DETAILS);
       setToken(null);
-      return;
     }
   }
   // Log out user from site
   function userLogOut() {
     setUserDetails(DEFAULT_USER_DETAILS);
     setToken(null);
+    delete window.localStorage["token"];
   }
 
   return (

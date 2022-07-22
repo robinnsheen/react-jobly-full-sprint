@@ -28,16 +28,16 @@ function LoginForm({ auth }) {
   //auth formdata on submit
   function handleSubmit(evt) {
     evt.preventDefault();
-    auth(formData);
+    try {
+      auth(formData);
+    } catch (err) {
+      console.log(err);
+      setErrors(err);
+    }
   }
 
   //TODO: try to catch errors to alert
-  try {
-    auth(formData);
-  } catch (err) {
-    console.log(err);
-    setErrors(err);
-  }
+
 
   return (
     <form className = "LoginForm" onSubmit={handleSubmit}>
