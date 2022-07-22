@@ -1,22 +1,41 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import userContext from "./userContext";
 import { useContext } from "react";
-//TODO: doc string, try catch, change prop to better name, add and update error state
-function SignupForm({ submit }) {
+//TODO: try catch the errors
+/**
+ * SignupForm component
+ * Props:
+ *  - auth: function for handleSubmit to register a user
+ *
+ * States:
+ *  - formData: object showing values of input fields
+ *  - errors: errors or ""
+ *
+ * Rendered at /signup
+ */
+function SignupForm({ auth }) {
   const { userDetails } = useContext(userContext);
   const [formData, setFormData] = useState(userDetails);
-//TODO: docstring
+  const [errors, setErrors] = useState("");
+
+  //update state as input field changes
   function handleChange(evt) {
     const { name, value } = evt.target;
     setFormData(fd => ({ ...fd, [name]: value }));
   }
-//TODO: docstring
+  //auth form data on submit
   function handleSubmit(evt) {
     evt.preventDefault();
-    submit(formData);
+
+    try {
+      auth(formData);
+    } catch (err) {
+      console.log(err);
+      setErrors(err);
+    }
+
     console.log("is there token", formData);
   }
-
 
   return (
     <form onSubmit={handleSubmit}>

@@ -5,15 +5,22 @@ import CompanyDetail from './CompanyDetail';
 import JobList from './JobList';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
-import LogOut from './logout';
 import userContext from "./userContext";
 import { useContext } from "react";
 
 
-//TODO: pass down update function, update doc string, refactor return: one return statement that returns ternary(look into fragment)
+//TODO: refactor return: one return statement that returns ternary(look into fragment)
 
-/** List of routes and the components they render */
-function RoutesList({ register,login,logout }) {
+/** List of routes and the components they render
+ *  Props:
+ *   - register function
+ *   - login function
+ *
+ *  States: none
+ *
+ *  Returns correct routes for logged in vs logged out users
+*/
+function RoutesList({ register,login}) {
   const { userDetails } = useContext(userContext);
 
   const loggedIn = userDetails.username !== "" ? true : false;
@@ -32,8 +39,8 @@ function RoutesList({ register,login,logout }) {
     return (
       <Routes>
         <Route path="/" element={<HomePage  />} />
-        <Route path="/login" element={<LoginForm submit={login}/>} />
-        <Route path="/signup" element={<SignupForm submit={register}   />} />
+        <Route path="/login" element={<LoginForm auth={login}/>} />
+        <Route path="/signup" element={<SignupForm auth={register}   />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     );

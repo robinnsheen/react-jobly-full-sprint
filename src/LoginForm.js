@@ -3,25 +3,44 @@ import userContext from "./userContext";
 import { useContext } from "react";
 
 
-//TODO: docstring, rename prop to authenticate, add classname loginform for css
-function LoginForm({ submit }) {
+/**
+ * LoginForm component
+ * Props:
+ *  - auth: function for handleSubmit to register a user
+ *
+ * States:
+ *  - formData: object showing values of input fields
+ *  - errors: errors or ""
+ *
+ * Rendered at /login
+ */
+function LoginForm({ auth }) {
   const { userDetails } = useContext(userContext);
   const { username, password } = userDetails;
   const [formData, setFormData] = useState({ username, password });
+  const [errors, setErrors] = useState("");
 
   function handleChange(evt) {
     const { name, value } = evt.target;
     setFormData(fd => ({ ...fd, [name]: value }));
   }
-//move trycatch into handlesubmit add and update error state
+
+  //auth formdata on submit
   function handleSubmit(evt) {
     evt.preventDefault();
-    submit(formData);
-    console.log("is there token", formData);
+    auth(formData);
+  }
+
+  //TODO: try to catch errors to alert
+  try {
+    auth(formData);
+  } catch (err) {
+    console.log(err);
+    setErrors(err);
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className = "LoginForm" onSubmit={handleSubmit}>
       <h2>Login:</h2>
       username: <input name="username" value={formData.username} onChange={handleChange} />
       password: <input name="password" value={formData.password} onChange={handleChange} />

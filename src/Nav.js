@@ -5,8 +5,15 @@ import './Nav.css';
 
 /** Nav Component
  *  Nav Links to go to routes
+ *
+ *  Props:
+ *  - logout
+ *
+ *  States: none
+ *
+ *  Return correct navbar depending on logged in vs logged out user
  */
-//TODO: update doc string, change ptag to button/link
+//TODO: change ptag to button/link
 function Nav({ logout }) {
   const { userDetails } = useContext(userContext);
   const loggedIn = userDetails.username !== "" ? true : false;

@@ -14,14 +14,26 @@ const DEFAULT_USER_DETAILS = {
   email: "",
   password: ""
 };
-//TODO:update doc string
-/** Renders App with Nav and Routes for Jobly */
+
+/** Renders App with Nav and Routes for Jobly
+ *
+ * Props: none
+ *
+ * States:
+ * - userDetails
+ * - token
+ *
+ * functions for:
+ * - fetchUserOnSignupLogin
+ * - createUserSetToken
+ * - userLogin
+ * - userLogOut
+*/
 
 function App() {
   const [userDetails, setUserDetails] = useState(DEFAULT_USER_DETAILS);
   const [token, setToken] = useState(null);
 
-//TODO: in catch reset userDetail to default and toke to be null
   useEffect(function fetchUserOnSignupLogin() {
     async function fetchUser() {
       try {
@@ -31,7 +43,9 @@ function App() {
         const result = await JoblyApi.getUser(decodedToken.username);
         setUserDetails(result);
       } catch (err) {
-        console.log(err);
+        setUserDetails(DEFAULT_USER_DETAILS);
+        setToken(null);
+        return;
       }
 
     }
@@ -41,30 +55,33 @@ function App() {
 
 
   console.log("app.js userdetails = ", userDetails);
-//TODO: doc string, use try catch in signupform
+
+  // Get user info from JoblyApi using valid username and token
   async function createUserSetToken(formData) {
     try {
       const result = await JoblyApi.createNewUser(formData);
-      console.log("AJAX TOKEN", result);
       setToken(result);
 
-
     } catch (err) {
-      err.map(e => console.log(e));
+      setUserDetails(DEFAULT_USER_DETAILS);
+      setToken(null);
+      return;
     }
   }
-//TODO: doc string
+  // Auth and login user to JoblyApi
   async function userLogin(formData) {
     try {
-      const result = await JoblyApi.userLogin(formData);
+      const result = await JoblyApi.loginUser(formData);
       console.log(" Login AJAX TOKEN", result);
       setToken(result);
 
     } catch (err) {
-      err.map(e => console.log(e));
+      setUserDetails(DEFAULT_USER_DETAILS);
+      setToken(null);
+      return;
     }
   }
-  //logs out user by reseting token and userdetails
+  // Log out user from site
   function userLogOut() {
     setUserDetails(DEFAULT_USER_DETAILS);
     setToken(null);

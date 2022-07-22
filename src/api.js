@@ -1,5 +1,4 @@
 import axios from "axios";
-import { Navigate } from "react-router-dom";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
@@ -60,20 +59,19 @@ class JoblyApi {
     return res.company.jobs;
   }
 
-  //TODO: docstrings
-  //post new user
+  // post new user
   static async createNewUser(user) {
     let res = await this.request("auth/register", user, "post");
     console.log("createnewuser = ", res);
     return res.token;
   }
-
-  static async userLogin(user) {
+  // auth and log in user
+  static async loginUser(user) {
     let res = await this.request("auth/token", user, "post");
     console.log("api login", res.token);
     return res.token;
   }
-
+  // auth and get user information
   static async getUser(handle) {
     let res = await this.request(`users/${handle}`);
     console.log("getUser = ", res);
