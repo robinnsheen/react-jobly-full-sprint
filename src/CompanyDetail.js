@@ -18,7 +18,7 @@ import JobCard from "./JobCard";
  * Rendered at /companies/:company
  *
  */
-//TODO: ADD COMPANY LOGO IF PRESENT
+
 function CompanyDetail() {
   const [company, setCompany] = useState({ data: null, errors: null });
   const params = useParams();
@@ -27,7 +27,6 @@ function CompanyDetail() {
     async function fetchCompany() {
       try {
         const result = await JoblyApi.getCompany(params.company);
-        // console.log("GETCOMPANYRESULTS", result);
         setCompany({ data: result, errors: null });
       } catch (err) {
         setCompany({

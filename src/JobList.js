@@ -22,10 +22,6 @@ import "./JobList.css";
 function JobList() {
   const [jobs, setJobs] = useState(null);
   const [titleFilter, setTitleFilter] = useState(null);
-  // console.log("handle", params.company)
-  // console.log("jobs", jobs);
-  // console.log("titleFilter", titleFilter);
-
 
   useEffect(function fetchJobsOnRender() {
     async function fetchJobs() {
@@ -49,9 +45,9 @@ function JobList() {
     <div className="JobList col-md-8 offset-md-2">
       <SearchForm search={search} />
       <div className="JobList-list ">
-      {jobs.map(job => (
-        <JobCard key={job.id} job={job} />
-      ))}
+        {jobs.map(job => (
+          <JobCard key={job.id} job={job} />
+        ))}
       </div>
     </div>
   );

@@ -23,29 +23,28 @@ import userContext from "./userContext";
  *
  *  Returns correct routes for logged in vs logged out users
 */
-function RoutesList({ register,login,update}) {
+function RoutesList({ register, login, update }) {
   const { userDetails } = useContext(userContext);
-  //TODO: check for if we have a user logged in
   const loggedIn = userDetails.username !== "" ? true : false;
-  // console.log("istoken",istoken)
+
 
   if (loggedIn) {
     return (
       <Routes>
-        <Route path="/" element={<HomePage  />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/companies" element={<CompanyList />} />
         <Route path="companies/:company" element={<CompanyDetail />} />
         <Route path="/jobs" element={<JobList />} />
-        <Route path="/profile" element={<ProfileForm auth={update} />} />
+        <Route path="/profile" element={<ProfileForm update={update} />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     );
   } else {
     return (
       <Routes>
-        <Route path="/" element={<HomePage  />} />
-        <Route path="/login" element={<LoginForm auth={login}/>} />
-        <Route path="/signup" element={<SignupForm auth={register}   />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginForm auth={login} />} />
+        <Route path="/signup" element={<SignupForm auth={register} />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     );

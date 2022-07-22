@@ -12,7 +12,7 @@ import "./JobCard.css";
  */
 
 function JobCard({ job, company }) {
-  // console.log("Job",job)
+
 
   return (
     <div className="JobCard card">

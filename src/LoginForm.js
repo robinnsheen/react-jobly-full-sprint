@@ -19,7 +19,7 @@ function LoginForm({ auth }) {
   const { username, password } = userDetails;
   const [formData, setFormData] = useState({ username, password });
   const [errors, setErrors] = useState("");
-
+  //sets formData to value in input field
   function handleChange(evt) {
     const { name, value } = evt.target;
     setFormData(fd => ({ ...fd, [name]: value }));

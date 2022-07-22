@@ -26,7 +26,7 @@ function SignupForm({ auth }) {
   //auth form data on submit
   async function handleSubmit(evt) {
     evt.preventDefault();
-
+    //TODO: clear errors on second submit
     try {
       await auth(formData);
     } catch (err) {

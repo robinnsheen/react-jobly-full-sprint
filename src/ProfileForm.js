@@ -1,12 +1,12 @@
 import { useState } from "react";
 import userContext from "./userContext";
 import { useContext } from "react";
-//TODO: change auth prop to update
+//TODO: change update prop to update
 
 /**
  * ProfileForm component
  * Props:
- *  - auth: function for handleSubmit to update a user
+ *  - update: function for handleSubmit to update a user
  *
  * States:
  *  - formData: object showing values of input fields
@@ -14,9 +14,8 @@ import { useContext } from "react";
  *
  * Rendered at /profile
  */
-function ProfileForm({ auth }) {
+function ProfileForm({ update }) {
   const { userDetails } = useContext(userContext);
-  console.log(" IN PROFILE", userDetails);
   const [formData, setFormData] = useState(userDetails);
   const [errors, setErrors] = useState("");
 
@@ -25,13 +24,13 @@ function ProfileForm({ auth }) {
     const { name, value } = evt.target;
     setFormData(fd => ({ ...fd, [name]: value }));
   }
-  //auth form data on submit
+  //update form data on submit
   async function handleSubmit(evt) {
     evt.preventDefault();
 
     //TODO: clear error messages on second submit (same for all forms)
     try {
-      await auth(formData);
+      await update(formData);
     } catch (err) {
       setErrors(err);
     }

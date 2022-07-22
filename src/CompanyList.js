@@ -22,15 +22,10 @@ function CompanyList() {
   const [companies, setCompanies] = useState(null);
   const [nameFilter, setNameFilter] = useState(null);
 
-
-  console.log("companies", companies);
-  // console.log("nameFilter", nameFilter);
-
   useEffect(function fetchCompaniesOnRender() {
     async function fetchCompanies() {
 
       const result = await JoblyApi.getCompanies(nameFilter);
-      console.log("result", result);
       setCompanies(result);
     }
     fetchCompanies();
@@ -47,16 +42,16 @@ function CompanyList() {
     <div className="CompanyList col-md-8 offset-md-2">
       <SearchForm search={search} />
       <div className="Companies-list ">
-      {companies.map(company => (
+        {companies.map(company => (
 
 
-        <Link to={`/companies/${company.handle}`}>
-          <CompanyCard key={company.handle} company={company} />
-        </Link>
+          <Link to={`/companies/${company.handle}`}>
+            <CompanyCard key={company.handle} company={company} />
+          </Link>
 
 
-      ))}
-       </div>
+        ))}
+      </div>
     </div>
 
   );
