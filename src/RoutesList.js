@@ -23,7 +23,6 @@ import ProfileForm from './ProfileForm';
 */
 function RoutesList({ register,login,update}) {
 
-
   const istoken = window.localStorage.getItem("token") !== null ? true : false;
   console.log("istoken",istoken)
 

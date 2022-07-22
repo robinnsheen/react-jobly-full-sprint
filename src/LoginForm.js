@@ -34,11 +34,7 @@ function LoginForm({ auth }) {
     } catch (err) {
       setErrors(err);
     }
-
-    console.log("is there token", formData);
   }
-
-  //TODO: try to catch errors to alert
 
 
   return (

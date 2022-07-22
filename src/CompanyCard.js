@@ -10,7 +10,6 @@ import "./CompanyCard.css";
  *
  * CompanyList--> CompanyCard
  */
-//TODO: only render img if present
 function CompanyCard({ company }) {
 
   return (
