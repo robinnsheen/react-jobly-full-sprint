@@ -5,13 +5,15 @@ import CompanyDetail from './CompanyDetail';
 import JobList from './JobList';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
+import LogOut from './logout';
 import userContext from "./userContext";
 import { useContext } from "react";
 
-//TODO: pass down update function
+
+//TODO: pass down update function, update doc string, refactor return: one return statement that returns ternary(look into fragment)
 
 /** List of routes and the components they render */
-function RoutesList({ register,login }) {
+function RoutesList({ register,login,logout }) {
   const { userDetails } = useContext(userContext);
 
   const loggedIn = userDetails.username !== "" ? true : false;

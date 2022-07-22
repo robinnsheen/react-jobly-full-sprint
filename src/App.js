@@ -12,21 +12,22 @@ const DEFAULT_USER_DETAILS = {
   lastName: "",
   username: "",
   email: "",
+  password: ""
 };
-
+//TODO:update doc string
 /** Renders App with Nav and Routes for Jobly */
 
 function App() {
   const [userDetails, setUserDetails] = useState(DEFAULT_USER_DETAILS);
   const [token, setToken] = useState(null);
 
-
+//TODO: in catch reset userDetail to default and toke to be null
   useEffect(function fetchUserOnSignupLogin() {
     async function fetchUser() {
       try {
         JoblyApi.token = token;
-        const decodedToken = jwt_decode(token)
-        console.log("decodedtoken", decodedToken)
+        const decodedToken = jwt_decode(token);
+        console.log("decodedtoken", decodedToken);
         const result = await JoblyApi.getUser(decodedToken.username);
         setUserDetails(result);
       } catch (err) {
@@ -35,12 +36,12 @@ function App() {
 
     }
     fetchUser();
-    console.log("after use effect details:", userDetails);
+    // console.log("after use effect details:", userDetails);
   }, [token]);
 
 
   console.log("app.js userdetails = ", userDetails);
-
+//TODO: doc string, use try catch in signupform
   async function createUserSetToken(formData) {
     try {
       const result = await JoblyApi.createNewUser(formData);
@@ -52,7 +53,7 @@ function App() {
       err.map(e => console.log(e));
     }
   }
-
+//TODO: doc string
   async function userLogin(formData) {
     try {
       const result = await JoblyApi.userLogin(formData);
@@ -63,12 +64,18 @@ function App() {
       err.map(e => console.log(e));
     }
   }
+  //logs out user by reseting token and userdetails
+  function userLogOut() {
+    setUserDetails(DEFAULT_USER_DETAILS);
+    setToken(null);
+  }
+
   return (
     <div className="App">
       <userContext.Provider value={{ userDetails }}>
         <BrowserRouter>
-          <Nav />
-          <RoutesList register={createUserSetToken} login={userLogin} />
+          <Nav logout={userLogOut} />
+          <RoutesList register={createUserSetToken} login={userLogin} logout={userLogOut} />
         </BrowserRouter>
       </userContext.Provider>
 
