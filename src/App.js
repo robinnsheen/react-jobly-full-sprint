@@ -28,6 +28,7 @@ const DEFAULT_USER_DETAILS = {
  * - createUserSetToken
  * - userLogin
  * - userLogOut
+ * - profileUpdate
 */
 
 function App() {
@@ -60,29 +61,26 @@ fails sets token to null and userdetails to default value, sets token in JoblyAp
 
   // Get user info from JoblyApi using valid username and token
   async function createUserSetToken(formData) {
-    // try {
-      const result = await JoblyApi.createNewUser(formData);
-      setToken(result);
-
-    // } catch (err) {
-
-    //   setUserDetails(DEFAULT_USER_DETAILS);
-    //   setToken(null);
-    //   throw(err)
-    // }
+    const result = await JoblyApi.createNewUser(formData);
+    setToken(result);
   }
+
   // Auth and login user to JoblyApi
   async function userLogin(formData) {
-    try {
-      const result = await JoblyApi.loginUser(formData);
-      console.log(" Login AJAX TOKEN", result);
-      setToken(result);
-
-    } catch (err) {
-      setUserDetails(DEFAULT_USER_DETAILS);
-      setToken(null);
-    }
+    const result = await JoblyApi.loginUser(formData);
+    setToken(result);
   }
+
+  // Auth and update user info (firstName, lastName, email) in JoblyApi
+  async function profileUpdate(formData) {
+    const { firstName, lastName, email } = formData;
+    const updateData = { firstName, lastName, email};
+    const result = await JoblyApi.updateUser(userDetails.username, updateData);
+    const decodedToken = jwt_decode(token);
+    const newResult = await JoblyApi.getUser(decodedToken.username);
+    setUserDetails(newResult);
+  }
+
   // Log out user from site
   function userLogOut() {
     setUserDetails(DEFAULT_USER_DETAILS);
@@ -95,7 +93,7 @@ fails sets token to null and userdetails to default value, sets token in JoblyAp
       <userContext.Provider value={{ userDetails }}>
         <BrowserRouter>
           <Nav logout={userLogOut} />
-          <RoutesList register={createUserSetToken} login={userLogin} logout={userLogOut} />
+          <RoutesList register={createUserSetToken} login={userLogin} logout={userLogOut} update={profileUpdate} />
         </BrowserRouter>
       </userContext.Provider>
 

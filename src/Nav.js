@@ -24,6 +24,7 @@ function Nav({ logout }) {
         <ul className="navbar-nav ms-auto" >
           <NavLink className="nav-item" to="/companies">Companies</NavLink>
           <NavLink className="nav-item" to="/jobs">Jobs</NavLink>
+          <NavLink className="nav-item" to="/profile">Profile</NavLink>
           <p onClick={logout}>logout {userDetails.username}</p>
         </ul>
       </nav>

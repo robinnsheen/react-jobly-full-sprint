@@ -78,6 +78,13 @@ class JoblyApi {
     return res.user;
   }
 
+  // auth and edit user information firstName, lastName, password, email
+  static async updateUser(handle, updates) {
+    let res = await this.request(`users/${handle}`, updates, "patch");
+    console.log("updateUser = ", res);
+    return res.user;
+  }
+
   // obviously, you'll add a lot here ...
 }
 

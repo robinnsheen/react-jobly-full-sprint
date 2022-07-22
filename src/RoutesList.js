@@ -5,6 +5,7 @@ import CompanyDetail from './CompanyDetail';
 import JobList from './JobList';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
+import ProfileForm from './ProfileForm';
 
 
 
@@ -14,12 +15,13 @@ import SignupForm from './SignupForm';
  *  Props:
  *   - register function
  *   - login function
+ *   - update function
  *
  *  States: none
  *
  *  Returns correct routes for logged in vs logged out users
 */
-function RoutesList({ register,login}) {
+function RoutesList({ register,login,update}) {
 
 
   const istoken = window.localStorage.getItem("token") !== null ? true : false;
@@ -32,6 +34,7 @@ function RoutesList({ register,login}) {
         <Route path="/companies" element={<CompanyList />} />
         <Route path="companies/:company" element={<CompanyDetail />} />
         <Route path="/jobs" element={<JobList />} />
+        <Route path="/profile" element={<ProfileForm auth={update} />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     );

@@ -26,27 +26,33 @@ function LoginForm({ auth }) {
   }
 
   //auth formdata on submit
-  function handleSubmit(evt) {
+  async function handleSubmit(evt) {
     evt.preventDefault();
+
     try {
-      auth(formData);
+      await auth(formData);
     } catch (err) {
-      console.log(err);
       setErrors(err);
     }
+
+    console.log("is there token", formData);
   }
 
   //TODO: try to catch errors to alert
 
 
   return (
-    <form className = "LoginForm" onSubmit={handleSubmit}>
-      <h2>Login:</h2>
-      username: <input name="username" value={formData.username} onChange={handleChange} />
-      password: <input name="password" value={formData.password} onChange={handleChange} />
-      <button>login!</button>
-    </form>
-
+    <div className="LoginForm">
+      {errors
+        ? <div className="loginErrors">error {errors.map(error => (<div>{error}</div>))}</div>
+        : null}
+      <form className="LoginForm" onSubmit={handleSubmit}>
+        <h2>Login:</h2>
+        username: <input name="username" value={formData.username} onChange={handleChange} />
+        password: <input name="password" value={formData.password} onChange={handleChange} />
+        <button>login!</button>
+      </form>
+    </div>
   );
 }
 
