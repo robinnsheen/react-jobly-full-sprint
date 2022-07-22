@@ -6,6 +6,8 @@ import JobList from './JobList';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
 import ProfileForm from './ProfileForm';
+import { useContext } from "react";
+import userContext from "./userContext";
 
 
 
@@ -22,12 +24,12 @@ import ProfileForm from './ProfileForm';
  *  Returns correct routes for logged in vs logged out users
 */
 function RoutesList({ register,login,update}) {
-
+  const { userDetails } = useContext(userContext);
   //TODO: check for if we have a user logged in
-  const istoken = window.localStorage.getItem("token") !== null ? true : false;
-  console.log("istoken",istoken)
+  const loggedIn = userDetails.username !== "" ? true : false;
+  // console.log("istoken",istoken)
 
-  if (istoken) {
+  if (loggedIn) {
     return (
       <Routes>
         <Route path="/" element={<HomePage  />} />

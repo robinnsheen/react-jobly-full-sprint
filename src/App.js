@@ -89,6 +89,11 @@ fails sets token to null and userdetails to default value, sets token in JoblyAp
     delete window.localStorage["token"];
   }
 
+  //TODO: isLoading state
+  if (token && userDetails.username === "") {
+    return <p> LOADING ... </p>;
+  }
+
   return (
     <div className="App">
       <userContext.Provider value={{ userDetails }}>
