@@ -11,7 +11,7 @@ import { useContext } from "react";
 //TODO: pass down update function
 
 /** List of routes and the components they render */
-function RoutesList({ fxn }) {
+function RoutesList({ register,login }) {
   const { userDetails } = useContext(userContext);
 
   const loggedIn = userDetails.username !== "" ? true : false;
@@ -30,8 +30,8 @@ function RoutesList({ fxn }) {
     return (
       <Routes>
         <Route path="/" element={<HomePage  />} />
-        <Route path="/login" element={LoginForm} />
-        <Route path="/signup" element={<SignupForm submit={fxn}   />} />
+        <Route path="/login" element={<LoginForm submit={login}/>} />
+        <Route path="/signup" element={<SignupForm submit={register}   />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     );
