@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import JoblyApi from "./api";
 import JobCard from "./JobCard";
 import SearchForm from "./SearchForm";
-import { useParams } from 'react-router-dom';
 import "./JobList.css";
 
 /**

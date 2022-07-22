@@ -5,8 +5,7 @@ import CompanyDetail from './CompanyDetail';
 import JobList from './JobList';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
-import userContext from "./userContext";
-import { useContext } from "react";
+
 
 
 //TODO: refactor return: one return statement that returns ternary(look into fragment)
@@ -21,11 +20,12 @@ import { useContext } from "react";
  *  Returns correct routes for logged in vs logged out users
 */
 function RoutesList({ register,login}) {
-  const { userDetails } = useContext(userContext);
 
-  const loggedIn = userDetails.username !== "" ? true : false;
 
-  if (loggedIn) {
+  const istoken = window.localStorage.getItem("token") !== null ? true : false;
+  console.log("istoken",istoken)
+
+  if (istoken) {
     return (
       <Routes>
         <Route path="/" element={<HomePage  />} />

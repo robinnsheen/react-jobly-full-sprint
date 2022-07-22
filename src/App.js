@@ -34,6 +34,9 @@ function App() {
   const [userDetails, setUserDetails] = useState(DEFAULT_USER_DETAILS);
   const [token, setToken] = useState(window.localStorage.getItem("token"));
 
+/**updates userDetails when token changes with axios call from JoblyApi: if this
+fails sets token to null and userdetails to default value, sets token in JoblyApi
+ class */
   useEffect(function fetchUserOnSignupLogin() {
     async function fetchUser() {
       try {
@@ -46,6 +49,7 @@ function App() {
       } catch (err) {
         setUserDetails(DEFAULT_USER_DETAILS);
         setToken(null);
+        delete window.localStorage["token"];
       }
     }
     fetchUser();
@@ -56,14 +60,16 @@ function App() {
 
   // Get user info from JoblyApi using valid username and token
   async function createUserSetToken(formData) {
-    try {
+    // try {
       const result = await JoblyApi.createNewUser(formData);
       setToken(result);
 
-    } catch (err) {
-      setUserDetails(DEFAULT_USER_DETAILS);
-      setToken(null);
-    }
+    // } catch (err) {
+
+    //   setUserDetails(DEFAULT_USER_DETAILS);
+    //   setToken(null);
+    //   throw(err)
+    // }
   }
   // Auth and login user to JoblyApi
   async function userLogin(formData) {

@@ -6,7 +6,7 @@ import "./JobCard.css";
  *
  *  states: none
  *
- *  props: none
+ *  props: job company
  *
  *  jobList/CardDetails---> JobCard
  */

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import userContext from "./userContext";
 import { useContext } from "react";
 //TODO: try catch the errors
@@ -24,30 +24,33 @@ function SignupForm({ auth }) {
     setFormData(fd => ({ ...fd, [name]: value }));
   }
   //auth form data on submit
-  function handleSubmit(evt) {
+  async function handleSubmit(evt) {
     evt.preventDefault();
 
     try {
-      auth(formData);
+      await auth(formData);
     } catch (err) {
-      console.log(err);
+      console.log("should be error here", err);
       setErrors(err);
+      alert(errors);
     }
 
     console.log("is there token", formData);
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Register:</h2>
-      username: <input name="username" value={formData.username} onChange={handleChange} />
-      password: <input name="password" value={formData.password} onChange={handleChange} />
-      firstname: <input name="firstName" value={formData.firstName} onChange={handleChange} />
-      lastname: <input name="lastName" value={formData.lastName} onChange={handleChange} />
-      email: <input name="email" value={formData.email} onChange={handleChange} />
+    errors
+      ? <div className="signupErrors">error {errors.map(error => (<div>{error}</div>))}</div>
+      : <form onSubmit={handleSubmit}>
+        <h2>Register:</h2>
+        username: <input name="username" value={formData.username} onChange={handleChange} />
+        password: <input name="password" value={formData.password} onChange={handleChange} />
+        firstname: <input name="firstName" value={formData.firstName} onChange={handleChange} />
+        lastname: <input name="lastName" value={formData.lastName} onChange={handleChange} />
+        email: <input name="email" value={formData.email} onChange={handleChange} />
 
-      <button>Register!</button>
-    </form>
+        <button>Register!</button>
+      </form>
   );
 }
 
