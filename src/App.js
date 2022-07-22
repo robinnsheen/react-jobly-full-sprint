@@ -24,16 +24,18 @@ function App() {
   useEffect(function fetchUserOnSignupLogin() {
     async function fetchUser() {
       try {
+        JoblyApi.token = token;
         const decodedToken = jwt_decode(token)
-        console.log(decodedToken)
-        const result = await JoblyApi.getUser(decodedToken);
+        console.log("decodedtoken", decodedToken)
+        const result = await JoblyApi.getUser(decodedToken.username);
         setUserDetails(result);
       } catch (err) {
-        err.map(e => console.log(e));
+        console.log(err);
       }
 
     }
     fetchUser();
+    console.log("after use effect details:", userDetails);
   }, [token]);
 
 
@@ -56,7 +58,6 @@ function App() {
       const result = await JoblyApi.userLogin(formData);
       console.log(" Login AJAX TOKEN", result);
       setToken(result);
-      setUserDetails(formData);
 
     } catch (err) {
       err.map(e => console.log(e));
