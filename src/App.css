@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+.btn-primary {
+  background-color: slateblue !important;
+}
+
+.btn-primary:hover {
+  background-color: rgb(97, 63, 182) !important;
+}

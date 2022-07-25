@@ -1,6 +1,7 @@
 import { useState } from "react";
 import userContext from "./userContext";
 import { useContext } from "react";
+import "./LoginForm.css"
 
 
 /**
@@ -38,15 +39,36 @@ function LoginForm({ auth }) {
 
 
   return (
-    <div className="LoginForm">
+    <div className="LoginForm col-md-6 offset-md-3">
       {errors
-        ? <div className="loginErrors">error {errors.map(error => (<div>{error}</div>))}</div>
+        ? <div className="LoginErrors">error {errors.map(error => (<div>{error}</div>))}</div>
         : null}
       <form className="LoginForm" onSubmit={handleSubmit}>
-        <h2>Login:</h2>
-        username: <input name="username" value={formData.username} onChange={handleChange} />
-        password: <input name="password" value={formData.password} onChange={handleChange} />
-        <button>login!</button>
+        <h2>Login to Jobly</h2>
+
+        <div className="form-group mb-4">
+          <label htmlFor="username">Username: </label>
+          <input
+            className="form-control"
+            name="username"
+            value={formData.username}
+            onChange={handleChange}
+            placeholder="username"
+          />
+        </div>
+
+        <div className="form-group mb-4">
+          <label htmlFor="password">Password: </label>
+          <input
+            className="form-control"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            placeholder="password"
+          />
+        </div>
+
+        <button className="btn btn-primary">Login!</button>
       </form>
     </div>
   );

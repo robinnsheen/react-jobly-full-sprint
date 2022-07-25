@@ -1,6 +1,7 @@
 import { useState } from "react";
 import userContext from "./userContext";
 import { useContext } from "react";
+import "./ProfileForm.css";
 //TODO: change update prop to update
 
 /**
@@ -40,18 +41,55 @@ function ProfileForm({ update }) {
   //TODO: Fix class names, line lengths
 
   return (
-    <div className="SignUpForm">
+    <div className="ProfileForm col-md-6 offset-md-3">
       {errors
-        ? <div className="signupErrors">error {errors.map(error => (<div>{error}</div>))}</div>
+        ? <div className="ProfileForm-errors">error {errors.map(error => (<div>{error}</div>))}</div>
         : null}
       <form onSubmit={handleSubmit}>
-        <h2>Profile Update:</h2>
-        username: <input disabled name="username" value={formData.username} onChange={handleChange} />
-        firstname: <input name="firstName" value={formData.firstName} onChange={handleChange} />
-        lastname: <input name="lastName" value={formData.lastName} onChange={handleChange} />
-        email: <input name="email" value={formData.email} onChange={handleChange} />
+        <h2>Update your profile</h2>
 
-        <button>Update!</button>
+        <div className="form-group mb-4">
+          <label htmlFor="username">Username: </label>
+          <input
+            disabled
+            className="form-control"
+            name="username"
+            value={formData.username}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="form-group mb-4">
+          <label htmlFor="firstName">First Name: </label>
+          <input
+            className="form-control"
+            name="firstName"
+            value={formData.firstName}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="form-group mb-4">
+          <label htmlFor="lastName">Last Name: </label>
+          <input
+            className="form-control"
+            name="lastName"
+            value={formData.lastName}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="form-group mb-4">
+          <label htmlFor="email">Email: </label>
+          <input
+            className="form-control"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+        </div>
+
+        <button className="btn btn-primary">Update!</button>
       </form>
     </div>
   );

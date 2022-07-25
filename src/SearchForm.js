@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./SearchForm.css";
 
 /**
  * SearchForm component
@@ -25,9 +26,12 @@ function SearchForm({ search }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input value={term} onChange={handleChange} />
-      <button>Search!</button>
+    <form className="SearchForm mb-4" onSubmit={handleSubmit}>
+      <input
+        value={term}
+        onChange={handleChange}
+        placeholder="search" />
+      <button className="btn btn-primary mx-2">Search!</button>
     </form>
   );
 }

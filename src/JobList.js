@@ -43,6 +43,7 @@ function JobList() {
 
   return (
     <div className="JobList col-md-8 offset-md-2">
+      <h2>Jobs</h2>
       <SearchForm search={search} />
       <div className="JobList-list ">
         {jobs.map(job => (

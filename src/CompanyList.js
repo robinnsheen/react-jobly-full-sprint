@@ -40,6 +40,7 @@ function CompanyList() {
 
   return (
     <div className="CompanyList col-md-8 offset-md-2">
+      <h2>Companies</h2>
       <SearchForm search={search} />
       <div className="Companies-list ">
         {companies.map(company => (

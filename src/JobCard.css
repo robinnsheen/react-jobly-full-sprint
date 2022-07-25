@@ -1,4 +1,14 @@
 .JobCard {
-    border: 2px solid black;
     margin: 10px;
+    color: black;
+    border-radius: 0px;
+}
+
+.JobCard .CardBody {
+    margin: 1rem;
+    text-align: left;
+}
+
+.JobCard p {
+    margin-bottom: 0.5rem;
 }

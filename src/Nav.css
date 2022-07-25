@@ -2,9 +2,8 @@
     top: 0;
     width: 100%;
     font-weight: bold;
+    font-size: larger;
 }
-
-
 
 nav {
     background-color: slateblue;
@@ -24,6 +23,11 @@ a.active {
     text-decoration: none;
 }
 
-nav a.hover {
+nav a:hover {
     text-decoration: none;
+    color: rgb(53, 53, 53);;
+}
+
+nav a:visited {
+    color: none;
 }

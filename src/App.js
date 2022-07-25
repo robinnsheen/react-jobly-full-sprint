@@ -47,6 +47,7 @@ function App() {
         const result = await JoblyApi.getUser(decodedToken.username);
         setUserDetails(result);
         window.localStorage.setItem("token", token);
+
       } catch (err) {
         setUserDetails(DEFAULT_USER_DETAILS);
         setToken(null);
@@ -55,9 +56,6 @@ function App() {
     }
     fetchUser();
   }, [token]);
-
-
-
 
   // Get user info from JoblyApi using valid username and token
   async function createUserSetToken(formData) {
@@ -76,7 +74,6 @@ function App() {
     const { firstName, lastName, email } = formData;
     const updateData = { firstName, lastName, email };
     const result = await JoblyApi.updateUser(userDetails.username, updateData);
-
     setUserDetails(result);
   }
 

@@ -44,8 +44,8 @@ function CompanyDetail() {
   else if (company.data === null) return <i>Loading...</i>;
 
   return (
-    <div className="CompanyDetail">
-      <div>
+    <div className="CompanyDetail col-md-8 offset-md-2">
+      <div className="mb-4">
         <h2>{company.data.name}</h2>
         <p>{company.data.description}</p>
       </div>
