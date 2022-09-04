@@ -1,5 +1,18 @@
-#Jobly
+# Jobly
 https://r26-react-jobly-rs.surge.sh/
+
+# Login or sign up to Jobly to see companies and job listings!
+![image](https://user-images.githubusercontent.com/100234937/188332775-db77de47-9a3e-4266-9238-a2c38bd4e90e.png)
+
+# Companies are listed with their descriptions and link to company specific job listings.
+![image](https://user-images.githubusercontent.com/100234937/188332867-116f74b3-d030-4039-8a2b-7235bb7fe59e.png)
+
+# List of jobs show equity, salary expectations, and associated company. They also link to information about the company.
+![image](https://user-images.githubusercontent.com/100234937/188332873-c36d0c89-1c1e-42b7-998b-104d46766567.png)
+
+# Edit your profile in case of any updates. 
+![image](https://user-images.githubusercontent.com/100234937/188332875-0f922498-383e-4348-8556-c8ca0cc0db96.png)
+
 
 # Getting Started with Create React App
 
