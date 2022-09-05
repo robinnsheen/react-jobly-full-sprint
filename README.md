@@ -13,6 +13,10 @@ https://r26-react-jobly-rs.surge.sh/
 # Edit your profile in case of any updates. 
 ![image](https://user-images.githubusercontent.com/100234937/188332875-0f922498-383e-4348-8556-c8ca0cc0db96.png)
 
+# React components design plan
+![image](https://user-images.githubusercontent.com/100234937/188359204-981ce1ff-b939-4ccd-a3e2-702139bf560c.png)
+
+
 
 # Getting Started with Create React App
 
